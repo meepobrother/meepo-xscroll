@@ -36,8 +36,4 @@ export class AppComponent implements OnInit {
     }
     e.next();
   }
-
-  onEnd(){
-    // this.xscroll.renderSuccess$.next();
-  }
 }

@@ -1,0 +1,18 @@
+:host{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    display: block;
+    overflow: hidden;
+}
+.xs-content{
+    background: #fff;
+    padding: 10px;
+    padding-bottom: 0;
+    width: 100%;
+}
+.xs-plugin-pullup-loading{
+    text-align: center;
+}

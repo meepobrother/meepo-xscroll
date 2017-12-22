@@ -1,0 +1,8 @@
+<div class="xs-container">
+    <div class="xs-content">
+        <ng-container *ngFor="let item of items; last as l;" [isEnd]="l" (onEnd)="onEnd($event)">
+            <ng-container *ngTemplateOutlet="xscrollRef.templateRef;context: {$implicit: item}"></ng-container>
+        </ng-container>
+        <ng-content></ng-content>
+    </div>
+</div>

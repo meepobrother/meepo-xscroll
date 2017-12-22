@@ -541,3 +541,38 @@ template {
 [hidden] {
     display: none;
 }
+
+.xs-plugin-pulldown-container {
+    text-align: center;
+    width: 100%;
+    line-height: 50px;
+}
+
+.xs-plugin-pulldown-up .up {
+    display: inline;
+}
+
+.xs-plugin-pulldown-up .down {
+    display: none;
+}
+
+.xs-plugin-pulldown-down .up {
+    display: none;
+}
+
+.xs-plugin-pulldown-down .down {
+    display: inline;
+}
+
+.xs-plugin-pullup-container {
+    line-height: 40px;
+    text-align: center;
+}
+
+html,
+body,
+app-root {
+    display: block;
+    width: 100%;
+    height: 100%;
+}

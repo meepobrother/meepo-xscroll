@@ -64,7 +64,9 @@ let globals = {
     'rxjs/add/operator/first': 'Rx.Observable.prototype',
     'rxjs/add/operator/catch': 'Rx.Observable.prototype',
     'rxjs/add/operator/switchMap': 'Rx.Observable.prototype',
-
+    'rxjs/add/operator/combineLatest': 'Rx.Observable.prototype',
+    'rxjs/add/operator/zip': 'Rx.Observable.prototype',
+    'rxjs/add/operator/take': 'Rx.Observable.prototype',
 
     'rxjs/BehaviorSubject': 'Rx',
     'rxjs/Observable': 'Rx',

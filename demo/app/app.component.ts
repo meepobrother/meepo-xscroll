@@ -1,4 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { XscrollService } from '../../src/app/app';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,6 +9,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'app';
-  constructor() {}
+  constructor(
+    public xscroll: XscrollService
+  ) {}
   ngOnInit(){}
 }

@@ -8,7 +8,7 @@ import { XscrollModule } from '../../src/app/app';
   ],
   imports: [
     BrowserModule,
-    XscrollModule.forRoot()
+    XscrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]

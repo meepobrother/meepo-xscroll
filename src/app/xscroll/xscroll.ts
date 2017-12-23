@@ -63,13 +63,15 @@ export class XscrollComponent implements OnInit {
     }
 
     xscrollInit(X) {
-        const xscroll = new X({
-            renderTo: this.ele.nativeElement,
-            ...this.config
-        });
-        this.xscroll.init(X, xscroll,
-            { hasMore: this.hasMore, hasRefresh: this.hasRefresh }
-        )
+        if(X){
+            const xscroll = new X({
+                renderTo: this.ele.nativeElement,
+                ...this.config
+            });
+            this.xscroll.init(X, xscroll,
+                { hasMore: this.hasMore, hasRefresh: this.hasRefresh }
+            )
+        }
     }
 
     ngOnInit() {

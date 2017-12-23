@@ -19,17 +19,10 @@ import { IsEndDirective } from './isend';
         IsEndDirective,
         XscrollRefDirective
     ],
-    providers: [],
+    providers: [
+        XscrollService,
+        LoaderService
+    ],
 })
-export class XscrollModule {
-    public static forRoot(): ModuleWithProviders {
-        return {
-            ngModule: XscrollModule,
-            providers: [
-                XscrollService,
-                LoaderService
-            ]
-        }
-    }
-}
+export class XscrollModule { }
 export { XscrollService } from './xscroll.service';

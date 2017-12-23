@@ -34,7 +34,6 @@ export class XscrollService {
             this.pulldown.reset(() => { });
         });
         this.pullupSuccess$.subscribe(res => {
-            console.log(this.pullup);
             this.pullup.complete();
         });
         this.renderSuccess$.subscribe(res => {
@@ -77,7 +76,6 @@ export class XscrollService {
                 this.pullup$.next(e);
             });
         }
-
         this._xscroll.render();
     }
 

@@ -3,7 +3,7 @@ import {
     ViewEncapsulation, Output, EventEmitter, TemplateRef, ContentChild
 } from '@angular/core';
 import { XscrollService } from '../xscroll.service';
-import { LoaderService } from '../loader.service';
+import { LoaderService, XscrollConfig } from '../loader.service';
 import { XscrollRefDirective } from './xscroll.ref';
 @Component({
     selector: 'xscroll',
@@ -61,7 +61,9 @@ export class XscrollComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.loader.loadAll();
+        let cfg: XscrollConfig = new XscrollConfig();
+        cfg = { ...cfg, ...{ pulldown: this.hasMore, pullup: this.hasRefresh } };
+        this.loader.loadAll(cfg);
     }
 
     onEnd() {

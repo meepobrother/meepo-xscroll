@@ -114,20 +114,36 @@ export class LoaderService {
         this.load$.next(this.XScroll);
     }
 
-    loadAll() {
+    loadAll(cfg: any) {
         if (!this.hasLoaded) {
-            let infinite$ = this._infinite$.asObservable();
-            let pullup$ = this._pullup$.asObservable();
-            let pulldown$ = this._pulldown$.asObservable();
-            let lazyload$ = this._lazyload$.asObservable();
-            let snap$ = this._snap$.asObservable();
-            let scale$ = this._scale$.asObservable();
+            let srcs: any[] = [];
+            if (cfg.infinite) {
+                let infinite$ = this._infinite$.asObservable();
+                srcs.push(infinite$);
+            }
+            if (cfg.pullup) {
+                let pullup$ = this._pullup$.asObservable();
+                srcs.push(pullup$);
+            }
+            if (cfg.pulldown) {
+                let pulldown$ = this._pulldown$.asObservable();
+                srcs.push(pulldown$);
+            }
+            if (cfg.lazyload) {
+                let lazyload$ = this._lazyload$.asObservable();
+                srcs.push(lazyload$);
+            }
+            if (cfg.snap) {
+                let snap$ = this._snap$.asObservable();
+                srcs.push(snap$);
+            }
+            if (cfg.scale) {
+                let scale$ = this._scale$.asObservable();
+                srcs.push(scale$);
+            }
             let xscroll$ = this._xscroll$.asObservable();
-
             xscroll$.combineLatest(
-                infinite$, pullup$,
-                pulldown$, lazyload$,
-                snap$, scale$
+                ...srcs
             ).take(1).subscribe((res: any[]) => {
                 this.XScroll = res[res.length - 1];
                 if (this.XScroll) {
@@ -135,12 +151,24 @@ export class LoaderService {
                 }
             });
             this._xscroll$.subscribe(res => {
-                this.loadInfinite();
-                this.loadPullup();
-                this.loadPulldown();
-                this.loadLazyload();
-                this.loadSnap();
-                this.loadScale();
+                if (cfg.infinite) {
+                    this.loadInfinite();
+                }
+                if (cfg.pullup) {
+                    this.loadPullup();
+                }
+                if (cfg.pulldown) {
+                    this.loadPulldown();
+                }
+                if (cfg.lazyload) {
+                    this.loadLazyload();
+                }
+                if (cfg.snap) {
+                    this.loadSnap();
+                }
+                if (cfg.scale) {
+                    this.loadScale();
+                }
             });
             this.loadXscroll();
             this.hasLoaded = true;
@@ -150,4 +178,13 @@ export class LoaderService {
             }
         }
     }
+}
+
+export class XscrollConfig {
+    infinite: boolean = false;
+    pullup: boolean = false;
+    pulldown: boolean = false;
+    lazyload: boolean = false;
+    snap: boolean = false;
+    scale: boolean = false;
 }

@@ -27,7 +27,6 @@ export class XscrollComponent implements OnInit {
     set items(val: any[]){
         if(val){
             this._items = val;
-            console.log(this._items);
             this.cd.markForCheck();
         }
     }

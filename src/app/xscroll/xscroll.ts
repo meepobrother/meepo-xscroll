@@ -21,6 +21,8 @@ export class XscrollComponent implements OnInit {
     @Output() onRefresh: EventEmitter<any> = new EventEmitter();
 
     @Input() items: any[] = [];
+    @Input() hasMore = true;
+    @Input() hasRefresh = true;
 
     @ContentChild(XscrollRefDirective) xscrollRef: XscrollRefDirective;
     XScroll: any;
@@ -53,7 +55,9 @@ export class XscrollComponent implements OnInit {
             renderTo: this.ele.nativeElement,
             ...this.config
         });
-        this.xscroll.init(X, xscroll)
+        this.xscroll.init(X, xscroll,
+            { hasMore: this.hasMore, hasRefresh: this.hasRefresh }
+        )
     }
 
     ngOnInit() {

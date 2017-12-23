@@ -3,6 +3,8 @@ import { Subject } from 'rxjs/Subject';
 import "rxjs/add/operator/combineLatest";
 import "rxjs/add/operator/zip";
 import "rxjs/add/operator/take";
+import "rxjs/add/operator/debounceTime";
+
 import { LoaderService } from './loader.service';
 @Injectable()
 export class XscrollService {
@@ -36,7 +38,7 @@ export class XscrollService {
         this.pullupSuccess$.subscribe(res => {
             this.pullup.complete();
         });
-        this.renderSuccess$.subscribe(res => {
+        this.renderSuccess$.debounceTime(300).subscribe(res => {
             if (this._xscroll) {
                 this._xscroll.render();
             }

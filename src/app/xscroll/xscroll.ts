@@ -1,7 +1,8 @@
 import {
     Component, OnInit, ViewChild, ElementRef, Input,
     ViewEncapsulation, Output, EventEmitter, TemplateRef,
-    ContentChild, ChangeDetectionStrategy, ChangeDetectorRef
+    ContentChild, ChangeDetectionStrategy, ChangeDetectorRef,
+    AfterContentChecked, AfterContentInit, AfterViewInit
 } from '@angular/core';
 import { XscrollService } from '../xscroll.service';
 import { LoaderService, XscrollConfig } from '../loader.service';
@@ -18,7 +19,7 @@ import { XscrollRefDirective } from './xscroll.ref';
     exportAs: 'xscroll',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class XscrollComponent implements OnInit {
+export class XscrollComponent implements OnInit, AfterViewInit, AfterContentInit, AfterContentChecked {
     @Output() onLoad: EventEmitter<any> = new EventEmitter();
     @Output() onRefresh: EventEmitter<any> = new EventEmitter();
 
@@ -79,6 +80,18 @@ export class XscrollComponent implements OnInit {
         let cfg: XscrollConfig = new XscrollConfig();
         cfg = { ...cfg, ...{ pulldown: this.hasMore, pullup: this.hasRefresh } };
         this.loader.loadAll(cfg);
+    }
+
+    ngAfterContentChecked(){
+        this.onEnd();
+    }
+
+    ngAfterContentInit(){
+        this.onEnd();
+    }
+
+    ngAfterViewInit(){
+        this.onEnd();
     }
 
     onEnd() {

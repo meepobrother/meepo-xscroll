@@ -1,6 +1,6 @@
 import {
     Component, OnInit, ViewChild, ElementRef, Input,
-    ViewEncapsulation, Output, EventEmitter, TemplateRef, 
+    ViewEncapsulation, Output, EventEmitter, TemplateRef,
     ContentChild, ChangeDetectionStrategy, ChangeDetectorRef
 } from '@angular/core';
 import { XscrollService } from '../xscroll.service';
@@ -23,14 +23,14 @@ export class XscrollComponent implements OnInit {
     @Output() onRefresh: EventEmitter<any> = new EventEmitter();
 
     _items: any[] = [];
-    @Input() 
-    set items(val: any[]){
-        if(val){
+    @Input()
+    set items(val: any[]) {
+        if (val) {
             this._items = val;
             this.cd.markForCheck();
         }
     }
-    get items(){
+    get items() {
         return this._items;
     }
     @Input() hasMore = true;
@@ -44,6 +44,7 @@ export class XscrollComponent implements OnInit {
         lockX: true,
         lockY: false
     };
+
     constructor(
         public xscroll: XscrollService,
         public ele: ElementRef,
@@ -63,7 +64,7 @@ export class XscrollComponent implements OnInit {
     }
 
     xscrollInit(X) {
-        if(X){
+        if (X) {
             const xscroll = new X({
                 renderTo: this.ele.nativeElement,
                 ...this.config

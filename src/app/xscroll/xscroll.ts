@@ -15,7 +15,8 @@ import { XscrollRefDirective } from './xscroll.ref';
     providers: [
         XscrollService
     ],
-    exportAs: 'xscroll'
+    exportAs: 'xscroll',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class XscrollComponent implements OnInit {
     @Output() onLoad: EventEmitter<any> = new EventEmitter();
@@ -26,6 +27,7 @@ export class XscrollComponent implements OnInit {
     set items(val: any[]){
         if(val){
             this._items = val;
+            console.log(this._items);
             this.cd.markForCheck();
         }
     }
@@ -57,7 +59,6 @@ export class XscrollComponent implements OnInit {
             this.onRefresh.emit(this.xscroll.pulldownSuccess$);
         });
         this.xscroll.pullup$.subscribe(res => {
-            console.log('pullup');
             this.onLoad.emit(this.xscroll.pullupSuccess$);
         });
     }

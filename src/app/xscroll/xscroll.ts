@@ -1,6 +1,7 @@
 import {
     Component, OnInit, ViewChild, ElementRef, Input,
-    ViewEncapsulation, Output, EventEmitter, TemplateRef, ContentChild
+    ViewEncapsulation, Output, EventEmitter, TemplateRef, 
+    ContentChild, ChangeDetectionStrategy, ChangeDetectorRef
 } from '@angular/core';
 import { XscrollService } from '../xscroll.service';
 import { LoaderService, XscrollConfig } from '../loader.service';
@@ -20,7 +21,17 @@ export class XscrollComponent implements OnInit {
     @Output() onLoad: EventEmitter<any> = new EventEmitter();
     @Output() onRefresh: EventEmitter<any> = new EventEmitter();
 
-    @Input() items: any[] = [];
+    _items: any[] = [];
+    @Input() 
+    set items(val: any[]){
+        if(val){
+            this._items = val;
+            this.cd.markForCheck();
+        }
+    }
+    get items(){
+        return this._items;
+    }
     @Input() hasMore = true;
     @Input() hasRefresh = true;
 
@@ -35,7 +46,8 @@ export class XscrollComponent implements OnInit {
     constructor(
         public xscroll: XscrollService,
         public ele: ElementRef,
-        public loader: LoaderService
+        public loader: LoaderService,
+        public cd: ChangeDetectorRef
     ) {
         // 加载成功后初始化
         this.loader.load$.take(1).subscribe(res => {

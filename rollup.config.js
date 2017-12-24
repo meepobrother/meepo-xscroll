@@ -251,7 +251,7 @@ switch (target) {
 
 export default {
     exports: 'named',
-    name: 'ngZorro.antd',
+    name: 'meepo-xscroll',
     plugins,
     external: Object.keys(globals),
     globals,

@@ -14,7 +14,6 @@ import { IsEndDirective } from './isend';
     imports: [CommonModule],
     exports: [
         XscrollComponent,
-        IsEndDirective,
         XscrollRefDirective
     ],
     providers: [

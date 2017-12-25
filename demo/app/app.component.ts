@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
 
   onRefresh(e: any) {
     this.items = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 1; i++) {
       this.items.push(i);
     }
     e.next();
@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
 
   onLoad(e: any) {
     let len = this.items.length;
-    for (let i = len; i < len + 10; i++) {
+    for (let i = len; i < len + 1; i++) {
       this.items.push(i);
     }
     e.next();

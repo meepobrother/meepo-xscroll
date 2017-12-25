@@ -29,14 +29,19 @@ export class XscrollService {
 
     time: any = new Date().getTime();
     cfg: any;
+
+    loading: boolean = false;
     constructor(
         public loader: LoaderService
     ) {
         this.pulldownSuccess$.subscribe(res => {
-            this.pulldown.reset(() => { });
+            this.pulldown.reset(() => {
+                this.loading = false;
+            });
         });
         this.pullupSuccess$.subscribe(res => {
             this.pullup.complete();
+            this.loading = false;
         });
         this.renderSuccess$.debounceTime(300).subscribe(res => {
             if (this._xscroll) {
@@ -62,7 +67,10 @@ export class XscrollService {
             this._xscroll.plug(this.pulldown);
             this.pulldown.on("loading", (e) => {
                 // 执行下拉刷新
-                this.pulldown$.next(e);
+                if (!this.loading) {
+                    this.loading = true;
+                    this.pulldown$.next(e);
+                }
             });
         }
         if (cfg.hasMore) {
@@ -75,7 +83,10 @@ export class XscrollService {
             });
             this._xscroll.plug(this.pullup);
             this.pullup.on("loading", (e) => {
-                this.pullup$.next(e);
+                if (!this.loading) {
+                    this.loading = true;
+                    this.pullup$.next(e);
+                }
             });
         }
         this._xscroll.render();

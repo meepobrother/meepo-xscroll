@@ -56,10 +56,10 @@ export class XscrollComponent implements OnInit, AfterViewInit, AfterContentInit
         this.loader.load$.take(1).subscribe(res => {
             this.xscrollInit(res);
         });
-        this.xscroll.pulldown$.subscribe(res => {
+        this.xscroll.pulldown$.debounceTime(100).subscribe(res => {
             this.onRefresh.emit(this.xscroll.pulldownSuccess$);
         });
-        this.xscroll.pullup$.subscribe(res => {
+        this.xscroll.pullup$.debounceTime(100).subscribe(res => {
             this.onLoad.emit(this.xscroll.pullupSuccess$);
         });
     }

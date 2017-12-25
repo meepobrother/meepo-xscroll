@@ -2,7 +2,6 @@ import { Injectable, Inject } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 export const loadMaps: any = {};
 import { DOCUMENT } from '@angular/common';
-
 @Injectable()
 export class LoaderService {
     load$: Subject<any> = new Subject();

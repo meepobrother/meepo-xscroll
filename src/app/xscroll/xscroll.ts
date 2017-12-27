@@ -2,7 +2,8 @@ import {
     Component, OnInit, ViewChild, ElementRef, Input,
     ViewEncapsulation, Output, EventEmitter, TemplateRef,
     ContentChild, ChangeDetectionStrategy, ChangeDetectorRef,
-    AfterContentChecked, AfterContentInit, AfterViewInit
+    AfterContentChecked, AfterContentInit, AfterViewInit,
+    HostBinding
 } from '@angular/core';
 import { XscrollService } from '../xscroll.service';
 import { LoaderService, XscrollConfig } from '../loader.service';
@@ -36,6 +37,12 @@ export class XscrollComponent implements OnInit, AfterViewInit, AfterContentInit
     }
     @Input() hasMore = true;
     @Input() hasRefresh = true;
+
+    @HostBinding('class.full') _full: boolean = false;
+    @Input() 
+    set full(val: boolean){
+        this._full = val;
+    }
 
     @ContentChild(XscrollRefDirective) xscrollRef: XscrollRefDirective;
     XScroll: any;

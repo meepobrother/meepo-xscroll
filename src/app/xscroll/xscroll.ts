@@ -8,6 +8,7 @@ import {
 import { XscrollService } from '../xscroll.service';
 import { LoaderService, XscrollConfig } from '../loader.service';
 import { XscrollRefDirective } from './xscroll.ref';
+
 @Component({
     selector: 'xscroll',
     templateUrl: './xscroll.html',
@@ -23,7 +24,7 @@ import { XscrollRefDirective } from './xscroll.ref';
 export class XscrollComponent implements OnInit, AfterViewInit, AfterContentInit, AfterContentChecked {
     @Output() onLoad: EventEmitter<any> = new EventEmitter();
     @Output() onRefresh: EventEmitter<any> = new EventEmitter();
-
+    @Output() onInit: EventEmitter<any> = new EventEmitter();
     _items: any[] = [];
     @Input()
     set items(val: any[]) {
@@ -87,6 +88,7 @@ export class XscrollComponent implements OnInit, AfterViewInit, AfterContentInit
         let cfg: XscrollConfig = new XscrollConfig();
         cfg = { ...cfg, ...{ pulldown: this.hasMore, pullup: this.hasRefresh } };
         this.loader.loadAll(cfg);
+        this.onInit.emit(this);
     }
 
     ngAfterContentChecked(){

@@ -88,6 +88,7 @@ export class XscrollComponent implements OnInit, AfterViewInit, AfterContentInit
         let cfg: XscrollConfig = new XscrollConfig();
         cfg = { ...cfg, ...{ pulldown: this.hasMore, pullup: this.hasRefresh } };
         this.onInit.emit(this);
+        this.loader.loadAll(cfg);
     }
 
     ngAfterContentChecked(){

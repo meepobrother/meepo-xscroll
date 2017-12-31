@@ -149,6 +149,7 @@ export class LoaderService {
                     this.xscrollInit(this.XScroll);
                 }
             });
+            console.log(xscroll$);
             this._xscroll$.subscribe(res => {
                 if (cfg.infinite) {
                     this.loadInfinite();

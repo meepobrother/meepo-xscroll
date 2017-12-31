@@ -74,7 +74,6 @@ export class XscrollService {
             });
         }
         if (cfg.hasMore) {
-            // 注册上啦加载
             this.pullup = new this.XScroll.Plugins.PullUp({
                 upContent: "上拉加载更多...",
                 downContent: "释放加载...",
@@ -98,6 +97,5 @@ export class XscrollService {
             this.pullupSuccess$.next();
         }, 1000)
     }
-
 
 }

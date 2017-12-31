@@ -120,14 +120,10 @@ export class LoaderService {
                 let infinite$ = this._infinite$.asObservable();
                 srcs.push(infinite$);
             }
-            if (cfg.pullup) {
-                let pullup$ = this._pullup$.asObservable();
-                srcs.push(pullup$);
-            }
-            if (cfg.pulldown) {
-                let pulldown$ = this._pulldown$.asObservable();
-                srcs.push(pulldown$);
-            }
+            let pullup$ = this._pullup$.asObservable();
+            srcs.push(pullup$);
+            let pulldown$ = this._pulldown$.asObservable();
+            srcs.push(pulldown$);
             if (cfg.lazyload) {
                 let lazyload$ = this._lazyload$.asObservable();
                 srcs.push(lazyload$);

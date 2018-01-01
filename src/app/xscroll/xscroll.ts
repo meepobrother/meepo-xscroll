@@ -19,7 +19,8 @@ import { XscrollRefDirective } from './xscroll.ref';
         XscrollService
     ],
     exportAs: 'xscroll',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None
 })
 export class XscrollComponent implements OnInit, AfterViewInit, AfterContentInit, AfterContentChecked {
     @Output() onLoad: EventEmitter<any> = new EventEmitter();

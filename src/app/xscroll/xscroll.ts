@@ -41,8 +41,8 @@ export class XscrollComponent implements OnInit, AfterViewInit, AfterContentInit
     @Input() hasRefresh = true;
 
     @HostBinding('class.full') _full: boolean = false;
-    @Input() 
-    set full(val: boolean){
+    @Input()
+    set full(val: boolean) {
         this._full = val;
     }
 
@@ -92,15 +92,19 @@ export class XscrollComponent implements OnInit, AfterViewInit, AfterContentInit
         this.loader.loadAll(cfg);
     }
 
-    ngAfterContentChecked(){
+    scrollTop() {
+        this.xscroll.scrollTop();
+    }
+
+    ngAfterContentChecked() {
         this.onEnd();
     }
 
-    ngAfterContentInit(){
+    ngAfterContentInit() {
         this.onEnd();
     }
 
-    ngAfterViewInit(){
+    ngAfterViewInit() {
         this.onEnd();
     }
 

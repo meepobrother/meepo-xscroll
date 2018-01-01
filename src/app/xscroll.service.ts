@@ -91,6 +91,10 @@ export class XscrollService {
         this._xscroll.render();
     }
 
+    scrollTop(){
+        this._xscroll.scrollTop();
+    }
+
     test() {
         setTimeout(() => {
             this.pulldownSuccess$.next();

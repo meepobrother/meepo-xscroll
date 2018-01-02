@@ -95,11 +95,4 @@ export class XscrollService {
         this._xscroll.scrollTop();
     }
 
-    test() {
-        setTimeout(() => {
-            this.pulldownSuccess$.next();
-            this.pullupSuccess$.next();
-        }, 1000)
-    }
-
 }

@@ -5,13 +5,17 @@ import { XscrollComponent } from './xscroll/xscroll';
 import { XscrollRefDirective } from './xscroll/xscroll.ref';
 import { LoaderService } from './loader.service';
 import { IsEndDirective } from './isend';
+import { LoaderModule } from 'meepo-loader';
+
 @NgModule({
     declarations: [
         XscrollComponent,
         IsEndDirective,
         XscrollRefDirective
     ],
-    imports: [CommonModule],
+    imports: [CommonModule, LoaderModule.forRoot({
+        root: './'
+    })],
     exports: [
         XscrollComponent,
         XscrollRefDirective
